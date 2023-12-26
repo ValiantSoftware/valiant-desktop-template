@@ -2,3 +2,6 @@
 .vscode/
 bin/
 obj/
+artifacts/
+**/Resources/wwwroot/
+*.csproj.user
