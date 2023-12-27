@@ -14,6 +14,7 @@ internal static class Program
             .SetTitle("Valiant Template")
             .SetUseOsDefaultSize(false)
             .SetSize(1024, 768)
+            .SetMinSize(640, 480)
             .Center()
             .Load(ServerUrl.GetFromApp(app));
 

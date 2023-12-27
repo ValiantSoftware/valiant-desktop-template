@@ -28,8 +28,11 @@ function App() {
   return (
     <>
       <div className="flex h-screen flex-col justify-between">
-        <Header title="Valiant Template" body="A desktop app template using Photino for the desktop app shell, React for the UI, and .NET Core for the backend. Lightweight, fast, and supporting native compilation." />
-        <div className="mx-auto flex max-w-xl flex-col gap-4 p-10">
+        <Header
+          title="Valiant Template"
+          body="A desktop app template using Photino for the desktop app shell, React for the UI, and .NET Core for the backend. Lightweight, fast, and supporting native compilation."
+        />
+        <div className="mx-auto flex max-w-xl flex-col gap-2 md:gap-4 h-full">
           <Button className="w-full" onClick={() => setCount((count) => count + 1)}>
             Count (React): {count}
           </Button>
