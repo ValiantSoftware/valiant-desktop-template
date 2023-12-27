@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 using ValiantTemplate.Endpoints;
 
 namespace ValiantTemplate;
@@ -9,6 +10,10 @@ internal static class ServerBuilder
     public static WebApplication BuildWebApplication()
     {
         var builder = WebApplication.CreateSlimBuilder();
+        if (Program.IsDebug)
+        {
+            builder.Logging.AddDebug();
+        }
 
         ServerUrl.SetForBuilder(builder);
 
