@@ -4,6 +4,16 @@ namespace ValiantTemplate;
 
 internal static class Program
 {
+    public static bool IsDebug { get; }
+#if DEBUG
+    = true;
+#endif
+
+    public static bool IsRelease { get; }
+#if !DEBUG
+    = true;
+#endif
+
     [STAThread]
     public static void Main()
     {

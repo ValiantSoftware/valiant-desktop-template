@@ -14,11 +14,17 @@ internal static class ServerBuilder
 
         var app = builder.Build();
 
-        app.UseFileServer(new FileServerOptions()
+        // When running in debug, we connect to the Vite dev server, rather than using the
+        // embedded resources (which are not even included in debug builds). So we don't
+        // need to bother wiring up static files etc.
+        if (!Program.IsDebug)
         {
-            EnableDefaultFiles = true,
-            FileProvider = new ManifestEmbeddedFileProvider(typeof(Program).Assembly, "/wwwroot"),
-        });
+            app.UseFileServer(new FileServerOptions()
+            {
+                EnableDefaultFiles = true,
+                FileProvider = new ManifestEmbeddedFileProvider(typeof(Program).Assembly, "/wwwroot"),
+            });
+        }
 
         app.UseRouting();
         app.MapDemoEndpoints();

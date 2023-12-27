@@ -25,18 +25,17 @@
     <PackageReference Include="PublishAotCompressed" Version="1.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="wwwroot/**/*" />
-  </ItemGroup>
-
   <PropertyGroup>
     <UiRoot>..\ValiantTemplate.React\</UiRoot>
   </PropertyGroup>
 
-  <Target Name="BuildUserInterface" BeforeTargets="PrepareForBuild">
-    <Message Importance="high" Text="Restoring dependencies using PNPM..." />
+  <Target Name="BuildUserInterface" BeforeTargets="PrepareForBuild" Condition=" '$(Configuration)' == 'Release' ">
     <Exec WorkingDirectory="$(UiRoot)" Command="pnpm install" />
     <Exec WorkingDirectory="$(UiRoot)" Command="pnpm run build-wwwroot" />
   </Target>
+
+  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+    <EmbeddedResource Include="wwwroot/**/*" />
+  </ItemGroup>
 
 </Project>

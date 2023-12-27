@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace ValiantTemplate;
 
@@ -15,7 +14,7 @@ internal static class ServerUrl
 
     public static void SetForBuilder(WebApplicationBuilder builder)
     {
-        if (builder.Environment.IsDevelopment())
+        if (Program.IsDebug)
         {
             builder.WebHost.UseUrls(DevelopmentApi);
         }
@@ -27,7 +26,7 @@ internal static class ServerUrl
 
     public static string GetFromApp(WebApplication app)
     {
-        if (app.Environment.IsDevelopment())
+        if (Program.IsDebug)
         {
             return DevelopmentFrontEnd;
         }
