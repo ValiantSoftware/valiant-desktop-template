@@ -25,19 +25,18 @@
     <PackageReference Include="PublishAotCompressed" Version="1.0.2" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <UiRoot>..\ValiantTemplate.React\</UiRoot>
-    <UiBuildOutput>dist\</UiBuildOutput>
-  </PropertyGroup>
-
   <ItemGroup>
-    <EmbeddedResource Include="$(UiRoot)$(UiBuildOutput)**\*" LinkBase="wwwroot" />
+    <EmbeddedResource Include="wwwroot/**/*" />
   </ItemGroup>
 
-  <Target Name="BuildUserInterface" BeforeTargets="BeforeBuild">
+  <PropertyGroup>
+    <UiRoot>..\ValiantTemplate.React\</UiRoot>
+  </PropertyGroup>
+
+  <Target Name="BuildUserInterface" BeforeTargets="PrepareForBuild">
     <Message Importance="high" Text="Restoring dependencies using PNPM..." />
     <Exec WorkingDirectory="$(UiRoot)" Command="pnpm install" />
-    <Exec WorkingDirectory="$(UiRoot)" Command="pnpm run build" />
+    <Exec WorkingDirectory="$(UiRoot)" Command="pnpm run build-wwwroot" />
   </Target>
 
 </Project>

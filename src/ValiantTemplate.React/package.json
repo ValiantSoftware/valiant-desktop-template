@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --emptyOutDir"
+    "build": "vite build --emptyOutDir --outDir ../dist",
+    "build-wwwroot": "vite build --emptyOutDir --outDir ../../ValiantTemplate/wwwroot"
   },
   "dependencies": {
     "clsx": "^2.0.0",
