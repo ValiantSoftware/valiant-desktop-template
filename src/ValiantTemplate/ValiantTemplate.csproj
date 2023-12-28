@@ -28,17 +28,18 @@
     <UiRoot>..\ValiantTemplate.React\</UiRoot>
   </PropertyGroup>
 
-  <Target Name="BuildUserInterface" BeforeTargets="PrepareForBuild" Condition=" '$(Configuration)' == 'Release' ">
-    <Exec WorkingDirectory="$(UiRoot)" Command="pnpm install" />
-    <Exec WorkingDirectory="$(UiRoot)" Command="pnpm run build-wwwroot" />
-  </Target>
-
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <EmbeddedResource Include="wwwroot/**/*" />
-  </ItemGroup>
+  <Target Name="BuildUserInterface" BeforeTargets="PrepareForBuild" Condition=" '$(Configuration)' == 'Release' and '$(DesignTimeBuild)' != 'true' ">
+    <Exec WorkingDirectory="$(UiRoot)" Command="pnpm install" />
+    <Exec WorkingDirectory="$(UiRoot)" Command="pnpm run build-wwwroot" />
+    <ItemGroup>
+      <EmbeddedResource Include="wwwroot/**/*" />
+    </ItemGroup>
+  </Target>
+
+
 
 </Project>
