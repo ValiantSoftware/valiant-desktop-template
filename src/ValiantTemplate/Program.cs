@@ -2,7 +2,7 @@
 
 namespace ValiantTemplate;
 
-internal static class Program
+public static class Program
 {
     public static bool IsDebug { get; }
 #if DEBUG

@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ValiantTemplate;
 
-internal static class ServerUrl
+public static class ServerUrl
 {
     private const string ProductionServer = "http://127.0.0.1:0";
     private const string DevelopmentApi = "http://localhost:8195";

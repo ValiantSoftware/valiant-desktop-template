@@ -29,6 +29,9 @@
     <None Update="Icon.ico">
       <Visible>false</Visible>
     </None>
+    <None Update=".gitignore">
+      <Visible>false</Visible>
+    </None>
   </ItemGroup>
 
   <PropertyGroup>
@@ -46,7 +49,5 @@
       <EmbeddedResource Include="wwwroot/**/*" />
     </ItemGroup>
   </Target>
-
-
-
+  
 </Project>

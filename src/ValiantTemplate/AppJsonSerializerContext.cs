@@ -9,7 +9,7 @@ namespace ValiantTemplate;
 // But, personally, I feel that much of the appeal of this template is how well it works with AOT compilation.
 
 [JsonSerializable(typeof(DemoResponseModel))]
-internal partial class AppJsonSerializerContext : JsonSerializerContext
+public partial class AppJsonSerializerContext : JsonSerializerContext
 {
 
 }

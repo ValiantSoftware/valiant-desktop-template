@@ -6,7 +6,7 @@ using ValiantTemplate.Endpoints;
 
 namespace ValiantTemplate;
 
-internal static class ServerBuilder
+public static class ServerBuilder
 {
     public static WebApplication BuildWebApplication()
     {
