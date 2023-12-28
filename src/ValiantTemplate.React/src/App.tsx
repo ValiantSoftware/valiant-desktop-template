@@ -9,8 +9,8 @@ function App() {
 
   const getRandomNumberFromApi = async () => {
     const response = await fetch("/api/rng");
-    const value = await response.text();
-    return value;
+    const data = await response.json();
+    return data.randomNumber;
   };
 
   const launchCalculator = async () => {

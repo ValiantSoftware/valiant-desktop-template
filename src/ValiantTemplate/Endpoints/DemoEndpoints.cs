@@ -5,11 +5,15 @@ using Microsoft.AspNetCore.Routing;
 
 namespace ValiantTemplate.Endpoints;
 
-internal static class DemoEndpoints
+public static class DemoEndpoints
 {
     public static void MapDemoEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/rng", () => Results.Content(Random.Shared.Next(100).ToString()));
+        endpoints.MapGet("/api/rng", () =>
+        {
+            var model = new DemoResponseModel() { RandomNumber = Random.Shared.Next(100) };
+            return Results.Ok(model);
+        });
 
         endpoints.MapPost("/api/calc", () =>
         {
